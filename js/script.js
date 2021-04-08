@@ -44,7 +44,7 @@ function changeDRatio() {
 
 function calculate() {
 
-
+    x1 = $("#initial").val();
     mass = $("#mass").val();
     k = $("#kValue").val();
     c = $("#dFactor").val();
@@ -105,7 +105,6 @@ function calculate() {
 
     for (let i = 0; i < 20; i = i + 0.01) {
         let x = i;
-        let x1 = 10;
         let y = 1;
         if (ratio < 1) {
             y = ((x1 * Math.exp(-1 * ratio * result[0] * x)) * (Math.sin(result[2] * x + Math.atan((Math.sqrt(1 - ratio * ratio)) / ratio)))) / (Math.sqrt(1 - ratio * ratio));
@@ -186,7 +185,6 @@ function calculate() {
 
         for (let i = 0; i < 20; i = i + 0.01) {
             let x = i;
-            let x1 = 20;
             let y = (x1 * Math.exp(-1 * ratio * result[0] * x)) / (1 - ratio * ratio);
             dataplot3.push({
                 x: x,
@@ -198,13 +196,13 @@ function calculate() {
             zoomEnabled: true,
             theme: "light2",
             title: {
-                text: "δ Vs ζ"
+                text: "A Vs T"
             },
             axisX: {
-                title: "damping ratio (ζ)",
+                title: "Amplitude (A)",
             },
             axisY: {
-                title: "logerithmetic decrement (δ)",
+                title: "time in sec (t)",
             },
             data: [{
                 type: "spline",

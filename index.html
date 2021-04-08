@@ -84,14 +84,14 @@
           the differential equation of motion of the system is
         </p>
         <p>
-          <img src="./images/eq1.PNG" alt="equation">;
+          <img src="./images/eq1.PNG" alt="equation">
         </p>
         <p>
           The form of the solution of this equation depends upon whether the damping coefficient is equal to, greater
           than, or less than the critical damping coefficient
         </p>
         <p>
-          <img src="./images/eq2.PNG" alt="equation"  style="width: 145px !important;">;
+          <img src="./images/eq2.PNG" alt="equation"  style="width: 145px !important;">
         </p>
         <p>
 
@@ -104,7 +104,7 @@
   </div>
   <div class="row " id="inputParameters">
     <div class="col-sm-2"></div>
-    <div class="col-sm-8">
+    <div class="col-sm-img8">
       <h1 class="text-center">Input Parameters</h1>
       <p>
         <b> Free vibration: </b>
@@ -180,6 +180,18 @@
           <div class="col-sm-6">
             <input type="number" min="0" step="0.01" value="0.5" class="form-control" id="dRatio"
               onchange="changeDFactor(this)" placeholder="Damping ratio">
+          </div>
+          <div class="col-sm-3">
+            <p>---</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="initial" class="col-sm-3 col-form-label">Initial Displacement</label>
+          <div class="col-sm-6">
+            <input type="number" min="0" step="0.01" value="20" class="form-control" id="initial" placeholder="Damping ratio">
+          </div>
+          <div class="col-sm-3">
+            <p>mm</p>
           </div>
         </div>
         <div class="form-group row">
@@ -296,7 +308,7 @@
       </p>
       <p>
         If the damping of the system is less than critical, ζ &it; 1; then it is called underdamped
-        vibration and the solution is for an initial condition of the X=X_0 and V=0 at t=0,
+        vibration and the solution is for an initial condition of the X = X<sub>0</sub> and V = 0 at t = 0,
       </p>
       <p>
         <img src="./images/eq3.PNG" alt="equation"  style="width: 375px !important;">
@@ -317,7 +329,7 @@
 
       <p>
         When c = cc, there is no oscillation which is called critical damping and the solution of the equation is for
-        an initial condition of the X=X_0 and V=0 at t=0,
+        an initial condition of the X = X<sub>0</sub> and V = 0 at t = 0,
       </p>
 
       <p>
@@ -325,7 +337,7 @@
       </p>
       <p>
         When ζ > 1, it is called overdamped vibration and the solution of the equation is for an initial condition of
-        the X=X_0 and V=0 at t=0,
+        the X = X<sub>0</sub> and V = 0 at t = 0,
       </p>
 
       <p>
@@ -352,12 +364,12 @@
   </div>
   <div class="row m-2">
     <div class="col-sm-6" style="display: none;" id="box1">
-      <h2 class="text-center py-2">Logerithmetic decrement Vs damping factor </h2>
+      <h3 class="text-center py-2">Logerithmetic decrement Vs damping factor </h3>
       <div style=" height: 400px;" class="border" id="chart2">
       </div>
     </div>
     <div class="col-sm-6" style="display: none;" id="box2">
-      <h2 class="text-center py-2">Amplitude Vs Time</h2>
+      <h3 class="text-center py-2">Amplitude Vs Time</h3>
       <div style=" height: 400px;" class="border" id="chart3">
       </div>
     </div>
