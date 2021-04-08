@@ -63,16 +63,30 @@ function calculate() {
     if (ratio > 1) {
         result[2] = "NaN";
         result[3] = "NaN";
-        result[5] = "NaN";
+        result[6] = "NaN";
     }
     else {
         result[2] = result[0] * Math.sqrt(1 - Math.pow(ratio, 2));
         result[3] = result[2] / (2 * Math.PI);
-        result[5] = 2 * ratio * Math.PI / (Math.sqrt(1 - (ratio * ratio)));
+        result[6] = 2 * ratio * Math.PI / (Math.sqrt(1 - (ratio * ratio)));
+
+        result[2] = result[2].toFixed(3);
+        result[3] = result[3].toFixed(3);
+        result[6] = result[6].toFixed(3);
+
 
     }
 
     result[4] = 2 * Math.sqrt(k1 * mass1);
+    result[5] = 1/(2*ratio);
+
+    result[0] = result[0].toFixed(3);
+    result[1] = result[1].toFixed(3);
+    result[4] = result[4].toFixed(3);
+    result[5] = result[5].toFixed(3);
+
+
+
 
 
     $("#result0").html(result[0]);
@@ -81,4 +95,6 @@ function calculate() {
     $("#result3").html(result[3]);
     $("#result4").html(result[4]);
     $("#result5").html(result[5]);
+    $("#result6").html(result[6]);
+
 }
