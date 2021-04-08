@@ -13,7 +13,7 @@
     img {
       display: block;
       margin: auto;
-      width: auto;
+      width: 200px;
     }
   </style>
 
@@ -38,13 +38,13 @@
       </ul>
     </nav>
   </div>
-  <div class="row">
+  <div class="row" id="vibration">
     <div class="jumbotron col-sm-12 text-center mt-4">
       <h1>Single degree of freedom calculator</h1>
       <h3> free vibration systems</h3>
     </div>
   </div>
-  <div class="row " id="vibration">
+  <div class="row ">
     <div class="container">
       <div class="col-sm-12">
         <h1>What is Vibration</h1>
@@ -77,18 +77,21 @@
           For a combination of spring and damper:
         </p>
         <p>
-          For a single-degree-of-freedom system with a viscous damper, the differential equation of motion of the system
-          is
+          For a single-degree-of-freedom system with a viscous damper as shown in fig. 
+        </p>
+        <img src="./images/gif1.gif" alt="picture2" style="width: 500px !important;">
+        <p>
+          the differential equation of motion of the system is
         </p>
         <p>
-          mx ̈ + cx ̇ + kx = 0
+          <img src="./images/eq1.PNG" alt="equation">;
         </p>
         <p>
           The form of the solution of this equation depends upon whether the damping coefficient is equal to, greater
           than, or less than the critical damping coefficient
         </p>
         <p>
-          Cc = 2mω_n
+          <img src="./images/eq2.PNG" alt="equation"  style="width: 145px !important;">;
         </p>
         <p>
 
@@ -289,27 +292,27 @@
         <li>Critically damped systems</li>
         <li>Overdamped systems</li>
       </ul>
-      <img src="./images/Picture1.jpg" alt="Picture1">
+      <img src="./images/Picture1.jpg" alt="Picture1"  style="width: 500px !important;">
       </p>
       <p>
         If the damping of the system is less than critical, ζ &it; 1; then it is called underdamped
         vibration and the solution is for an initial condition of the X=X_0 and V=0 at t=0,
       </p>
       <p>
-        X=(X_0 e^(-ζω_n t))/(√(1-ζ^2 ) ) sin⁡( ω_d t+tan^(-1)⁡〖(√(1-ζ^2 )/ζ〗))
+        <img src="./images/eq3.PNG" alt="equation"  style="width: 375px !important;">
       </p>
       <p>
         The damped natural frequency of underdamped vibration can be given as
       </p>
       <p>
-        ω_d= ω_n √(1-ζ^2 )
+        <img src="./images/eq4.PNG" alt="equation"  style="width: 220px !important;">
       </p>
       <p>
         For an under-damped oscillation, there will be a decrement in the amplitude of successive oscillation over time
         which can be defined by the logarithmic decrement. The formula for the logarithmic decrement is as follows:
       </p>
       <p>
-        〖δ=ln⁡〖x1/x2〗〗⁡= 2πζ/√(1-ζ^2 )
+        <img src="./images/eq5.PNG" alt="equation" style="width: 245px !important;">
       </p>
 
       <p>
@@ -318,7 +321,7 @@
       </p>
 
       <p>
-        X=〖X_0 (1+ω_n t)e〗^(-ζω_n t)
+        <img src="./images/eq6.PNG" alt="equation"style="width: 265px !important;">
       </p>
       <p>
         When ζ > 1, it is called overdamped vibration and the solution of the equation is for an initial condition of
@@ -326,7 +329,7 @@
       </p>
 
       <p>
-        X=X_0/(2√(ζ^2-1) )((ζ+√(ζ^2-1)) e^((-ζ+√(ζ^2-1)) ω_n t)+(-ζ+√(ζ^2-1)) e^((-ζ-√(ζ^2-1)) ω_n t))
+        <img src="./images/eq7.PNG" alt="equation" style="width: 690px !important;">
       </p>
       <p>
         This is a non-oscillatory motion; if the system is displaced from its equilibrium position, it tends to return
