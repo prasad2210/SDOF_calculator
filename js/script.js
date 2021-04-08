@@ -49,6 +49,7 @@ function calculate() {
     k = $("#kValue").val();
     c = $("#dFactor").val();
     ratio = $("#dRatio").val();
+    ratio = Number(ratio);
     let mFactor = $("#selectM").val();
     let kFactor = $("#selectK").val();
     let cFactor = $("#selectC").val();
@@ -60,7 +61,7 @@ function calculate() {
     result[0] = Math.sqrt(k1 / mass1);
     result[1] = result[0] / (2 * Math.PI);
 
-    if (ratio > 1) {
+    if (ratio >= 1) {
         result[2] = "NaN";
         result[3] = "NaN";
         result[6] = "NaN";
@@ -96,5 +97,69 @@ function calculate() {
     $("#result4").html(result[4]);
     $("#result5").html(result[5]);
     $("#result6").html(result[6]);
+
+
+    let datagiven = [];
+
+    for(let i=0; i<20; i= i + 0.01){
+        let x = i;
+        let x1 = 10;
+        let y = 1;
+        if(ratio< 1){
+            y = ((x1*Math.exp(-1*ratio*result[0]*x))*(Math.sin(result[2]*x + Math.atan((Math.sqrt(1 - ratio*ratio))/ratio) )))/(Math.sqrt(1 - ratio*ratio));
+        } 
+        else if(ratio == 1){
+            y = x1*(1 + result[0]*x)*Math.exp(-1*result[0]*x);
+        }
+        else if(ratio >1){
+            let y1 = Math.sqrt(ratio*ratio -1);
+            
+            y1 = y1.toFixed(5);
+            y1 = Number(y1);
+            
+            y = (x1/(2*y1))*(((ratio + y1)*(Math.exp((-1*ratio + y1)*result[0]*x))) + ((-1*ratio + y1)*(Math.exp((-1*ratio - y1)*result[0]*x))));
+            // // console.log(y);
+            // let y2 = x1/(2*y1);
+            // console.log(y2);
+            // let y5 = Number(ratio) + Number(y1);
+            // console.log(typeof(y1));
+            // let y3 = Math.exp(((-1*ratio) + y1)*result[0]*x);
+            // console.log(y3);
+            
+            // let y4 = ((-1*ratio) + y1)*(Math.exp((-1*ratio) -y1)*result[0]*x);
+            // console.log(y4)
+            // y = y2*(y3 + y4);
+            // console.log(y);
+            
+        }
+
+        datagiven.push({
+            x : x,
+            y : y
+        });
+    }
+
+    var chart = new CanvasJS.Chart("chart1", {
+        animationEnabled: true,
+	    zoomEnabled: true,
+        theme: "light2",
+        title:{
+            text: "Free vibration graph"
+        },
+        axisX: {
+            title: "Time in sec",
+        },
+        axisY: {
+            title: "X(t) in mm",
+        },
+        data: [{        
+            type: "spline",
+              indexLabelFontSize: 16,
+            dataPoints: datagiven
+        }]
+    });
+    chart.render();
+
+
 
 }
