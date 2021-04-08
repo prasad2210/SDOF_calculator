@@ -79,7 +79,7 @@ function calculate() {
     }
 
     result[4] = 2 * Math.sqrt(k1 * mass1);
-    result[5] = 1/(2*ratio);
+    result[5] = 1 / (2 * ratio);
 
     result[0] = result[0].toFixed(3);
     result[1] = result[1].toFixed(3);
@@ -100,50 +100,40 @@ function calculate() {
 
 
     let datagiven = [];
+    let dataplot2 = [];
+    let dataplot3 = [];
 
-    for(let i=0; i<20; i= i + 0.01){
+    for (let i = 0; i < 20; i = i + 0.01) {
         let x = i;
         let x1 = 10;
         let y = 1;
-        if(ratio< 1){
-            y = ((x1*Math.exp(-1*ratio*result[0]*x))*(Math.sin(result[2]*x + Math.atan((Math.sqrt(1 - ratio*ratio))/ratio) )))/(Math.sqrt(1 - ratio*ratio));
-        } 
-        else if(ratio == 1){
-            y = x1*(1 + result[0]*x)*Math.exp(-1*result[0]*x);
+        if (ratio < 1) {
+            y = ((x1 * Math.exp(-1 * ratio * result[0] * x)) * (Math.sin(result[2] * x + Math.atan((Math.sqrt(1 - ratio * ratio)) / ratio)))) / (Math.sqrt(1 - ratio * ratio));
         }
-        else if(ratio >1){
-            let y1 = Math.sqrt(ratio*ratio -1);
-            
+        else if (ratio == 1) {
+            y = x1 * (1 + result[0] * x) * Math.exp(-1 * result[0] * x);
+        }
+        else if (ratio > 1) {
+            let y1 = Math.sqrt(ratio * ratio - 1);
+
             y1 = y1.toFixed(5);
             y1 = Number(y1);
-            
-            y = (x1/(2*y1))*(((ratio + y1)*(Math.exp((-1*ratio + y1)*result[0]*x))) + ((-1*ratio + y1)*(Math.exp((-1*ratio - y1)*result[0]*x))));
-            // // console.log(y);
-            // let y2 = x1/(2*y1);
-            // console.log(y2);
-            // let y5 = Number(ratio) + Number(y1);
-            // console.log(typeof(y1));
-            // let y3 = Math.exp(((-1*ratio) + y1)*result[0]*x);
-            // console.log(y3);
-            
-            // let y4 = ((-1*ratio) + y1)*(Math.exp((-1*ratio) -y1)*result[0]*x);
-            // console.log(y4)
-            // y = y2*(y3 + y4);
-            // console.log(y);
-            
+
+            y = (x1 / (2 * y1)) * (((ratio + y1) * (Math.exp((-1 * ratio + y1) * result[0] * x))) + ((-1 * ratio + y1) * (Math.exp((-1 * ratio - y1) * result[0] * x))));
+
         }
 
         datagiven.push({
-            x : x,
-            y : y
+            x: x,
+            y: y
         });
     }
 
     var chart = new CanvasJS.Chart("chart1", {
         animationEnabled: true,
-	    zoomEnabled: true,
+        zoomEnabled: true,
         theme: "light2",
-        title:{
+        title: {
             text: "Free vibration graph"
         },
         axisX: {
@@ -152,13 +142,85 @@ function calculate() {
         axisY: {
             title: "X(t) in mm",
         },
-        data: [{        
+        data: [{
             type: "spline",
-              indexLabelFontSize: 16,
+            indexLabelFontSize: 16,
             dataPoints: datagiven
         }]
     });
     chart.render();
+
+    if (ratio < 1) {
+        $("#box1").css('display', "block");
+        $("#box2").css("display", "block");
+
+        for (let i = 0.1; i < 1; i = i + 0.01) {
+            let x = i;
+            let y = (2 * Math.PI * x) / (Math.sqrt(1 - (x * x)));
+            dataplot2.push({
+                x: x,
+                y: y
+            });
+        }
+        var chart = new CanvasJS.Chart("chart2", {
+            animationEnabled: true,
+            zoomEnabled: true,
+            theme: "light2",
+            title: {
+                text: "δ Vs ζ"
+            },
+            axisX: {
+                title: "damping ratio (ζ)",
+            },
+            axisY: {
+                title: "logerithmetic decrement (δ)",
+            },
+            data: [{
+                type: "spline",
+                indexLabelFontSize: 16,
+                dataPoints: dataplot2
+            }]
+        });
+        chart.render();
+
+
+        for (let i = 0; i < 20; i = i + 0.01) {
+            let x = i;
+            let x1 = 20;
+            let y = (x1 * Math.exp(-1 * ratio * result[0] * x)) / (1 - ratio * ratio);
+            dataplot3.push({
+                x: x,
+                y: y
+            });
+        }
+        var chart = new CanvasJS.Chart("chart3", {
+            animationEnabled: true,
+            zoomEnabled: true,
+            theme: "light2",
+            title: {
+                text: "δ Vs ζ"
+            },
+            axisX: {
+                title: "damping ratio (ζ)",
+            },
+            axisY: {
+                title: "logerithmetic decrement (δ)",
+            },
+            data: [{
+                type: "spline",
+                indexLabelFontSize: 16,
+                dataPoints: dataplot3
+            }]
+        });
+        chart.render();
+
+
+    }
+    else {
+        $("#box1").css('display', "none");
+        $("#box2").css("display", "none");
+    }
+
 
 
 
