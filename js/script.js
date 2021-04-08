@@ -102,7 +102,6 @@ function calculate() {
     let datagiven = [];
     let dataplot2 = [];
     let dataplot3 = [];
-    console.log(x1);
 
     for (let i = 0; i < 20; i = i + 0.01) {
         let x = i;
