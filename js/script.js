@@ -185,7 +185,7 @@ function calculate() {
 
         for (let i = 0; i < 20; i = i + 0.01) {
             let x = i;
-            let y = (x1 * Math.exp(-1 * ratio * result[0] * x)) / (1 - ratio * ratio);
+            let y = (x1 * Math.exp(-1 * ratio * result[0] * x)) / Math.sqrt((1 - ratio * ratio));
             dataplot3.push({
                 x: x,
                 y: y
