@@ -77,7 +77,7 @@
           For a combination of spring and damper:
         </p>
         <p>
-          For a single-degree-of-freedom system with a viscous damper as shown in fig. 
+          For a single-degree-of-freedom system with a viscous damper as shown in fig.
         </p>
         <img src="./images/gif1.gif" alt="picture2" style="width: 500px !important;">
         <p>
@@ -91,7 +91,7 @@
           than, or less than the critical damping coefficient
         </p>
         <p>
-          <img src="./images/eq2.PNG" alt="equation"  style="width: 145px !important;">
+          <img src="./images/eq2.PNG" alt="equation" style="width: 145px !important;">
         </p>
         <p>
 
@@ -132,12 +132,13 @@
       </p>
 
       <p></p>
+      <div id="error"></div>
       <form class="text-center">
         <div class="form-group row">
           <label for="mass" class="col-sm-3 col-form-label">Mass</label>
           <div class="col-sm-6">
             <input type="number" min="0" step="0.01" value="1" class="form-control" onchange="callback();" id="mass"
-              placeholder="Enter mass">
+              placeholder="Enter mass" required>
           </div>
           <div class="col-sm-3 center">
             <select name="massC" id="selectM" onchange="callback()" class="btn btn-outline-primary">
@@ -151,7 +152,7 @@
           <label for="kValue" class="col-sm-3 col-form-label">stiffness (K)</label>
           <div class="col-sm-6">
             <input type="number" min="0" step="0.01" value="1" class="form-control" onchange="callback();" id="kValue"
-              placeholder="Spring constant (Equivalent stiffness)">
+              placeholder="Spring constant (Equivalent stiffness)" required>
           </div>
           <div class="col-sm-3 center">
             <select name="kC" id="selectK" onchange="callback()" class="btn btn-outline-primary">
@@ -165,7 +166,7 @@
           <label for="dFactor" class="col-sm-3 col-form-label">Damping factor (C)</label>
           <div class="col-sm-6">
             <input type="number" min="0" step="0.01" value="1" class="form-control" id="dFactor"
-              onchange="changeDRatio()" placeholder="Damping factor">
+              onchange="changeDRatio()" placeholder="Damping factor" required>
           </div>
           <div class="col-sm-3 center">
             <select name="kC" id="selectC" onchange="callback()" class="btn btn-outline-primary">
@@ -179,7 +180,7 @@
           <label for="dRatio" class="col-sm-3 col-form-label">Damping ratio</label>
           <div class="col-sm-6">
             <input type="number" min="0" step="0.01" value="0.5" class="form-control" id="dRatio"
-              onchange="changeDFactor(this)" placeholder="Damping ratio">
+              onchange="changeDFactor(this)" placeholder="Damping ratio" required>
           </div>
           <div class="col-sm-3">
             <p>---</p>
@@ -188,7 +189,8 @@
         <div class="form-group row">
           <label for="initial" class="col-sm-3 col-form-label">Initial Displacement</label>
           <div class="col-sm-6">
-            <input type="number" min="0" step="0.01" value="20" class="form-control" id="initial" placeholder="Damping ratio">
+            <input type="number" min="0" step="0.01" value="20" class="form-control" id="initial"
+              placeholder="Displacement in mm">
           </div>
           <div class="col-sm-3">
             <p>mm</p>
@@ -234,60 +236,62 @@
         The natural log of the ratio of the amplitudes of any two successive peaks in a damped oscillation is the
         logarithmic decrement.
       </p>
-      <table class="table table-striped border">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Parameters</th>
-            <th scope="col">value</th>
-            <th scope="col">units</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Circular frequency &omega;<sub>n</sub> </td>
-            <td id="result0">---</td>
-            <td>rad/s</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Natural frequency F<sub>n</sub></td>
-            <td id="result1">---</td>
-            <td>Hz</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Damped natural Circular frequency &omega;<sub>d</sub></td>
-            <td id="result2">---</td>
-            <td>rad/s</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Damped natural frequency F<sub>d</sub></td>
-            <td id="result3">---</td>
-            <td>Hz</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Critical Damping C<sub>c</sub></td>
-            <td id="result4">---</td>
-            <td>Kg/s</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Quality Factor Q</td>
-            <td id="result5">---</td>
-            <td>---</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Logerithmetic decrement &delta;</td>
-            <td id="result6">---</td>
-            <td>---</td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="table">
+        <table class="table table-striped border">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Parameters</th>
+              <th scope="col">value</th>
+              <th scope="col">units</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Circular frequency &omega;<sub>n</sub> </td>
+              <td id="result0">---</td>
+              <td>rad/s</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Natural frequency F<sub>n</sub></td>
+              <td id="result1">---</td>
+              <td>Hz</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Damped natural Circular frequency &omega;<sub>d</sub></td>
+              <td id="result2">---</td>
+              <td>rad/s</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Damped natural frequency F<sub>d</sub></td>
+              <td id="result3">---</td>
+              <td>Hz</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Critical Damping C<sub>c</sub></td>
+              <td id="result4">---</td>
+              <td>Kg/s</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Quality Factor Q</td>
+              <td id="result5">---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Logerithmetic decrement &delta;</td>
+              <td id="result6">---</td>
+              <td>---</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -304,20 +308,20 @@
         <li>Critically damped systems</li>
         <li>Overdamped systems</li>
       </ul>
-      <img src="./images/Picture1.jpg" alt="Picture1"  style="width: 500px !important;">
+      <img src="./images/Picture1.jpg" alt="Picture1" style="width: 500px !important;">
       </p>
       <p>
         If the damping of the system is less than critical, ζ &it; 1; then it is called underdamped
         vibration and the solution is for an initial condition of the X = X<sub>0</sub> and V = 0 at t = 0,
       </p>
       <p>
-        <img src="./images/eq3.PNG" alt="equation"  style="width: 375px !important;">
+        <img src="./images/eq3.PNG" alt="equation" style="width: 375px !important;">
       </p>
       <p>
         The damped natural frequency of underdamped vibration can be given as
       </p>
       <p>
-        <img src="./images/eq4.PNG" alt="equation"  style="width: 220px !important;">
+        <img src="./images/eq4.PNG" alt="equation" style="width: 220px !important;">
       </p>
       <p>
         For an under-damped oscillation, there will be a decrement in the amplitude of successive oscillation over time
@@ -333,7 +337,7 @@
       </p>
 
       <p>
-        <img src="./images/eq6.PNG" alt="equation"style="width: 265px !important;">
+        <img src="./images/eq6.PNG" alt="equation" style="width: 265px !important;">
       </p>
       <p>
         When ζ > 1, it is called overdamped vibration and the solution of the equation is for an initial condition of
