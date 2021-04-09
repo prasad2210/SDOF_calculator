@@ -163,10 +163,10 @@ function calculate() {
                 text: "Free vibration graph"
             },
             axisX: {
-                title: "time in sec (t)",
+                title: "Time in sec",
             },
             axisY: {
-                title: "Amplitude (A)",
+                title: "X(t) in mm",
             },
             data: [{
                 type: "spline",
@@ -226,10 +226,10 @@ function calculate() {
                     text: "A Vs T"
                 },
                 axisX: {
-                    title: "Amplitude (A)",
+                    title: "Time in sec (t)",
                 },
                 axisY: {
-                    title: "time in sec (t)",
+                    title: "Amplitude (A)",
                 },
                 data: [{
                     type: "spline",
