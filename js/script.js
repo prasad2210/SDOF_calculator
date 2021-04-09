@@ -199,10 +199,10 @@ function calculate() {
                 text: "A Vs T"
             },
             axisX: {
-                title: "Amplitude (A)",
+                title: "time in sec (t)",
             },
             axisY: {
-                title: "time in sec (t)",
+                title: "Amplitude (A)",
             },
             data: [{
                 type: "spline",
