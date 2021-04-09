@@ -57,7 +57,7 @@ function calculate() {
         err += "Mass, ";
     }
     if (!k) {
-        err += "Stiffness value, ";
+        err += "Stiffness, ";
     }
     if (!c) {
         err += "Damping factor, ";
