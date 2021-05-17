@@ -1,3 +1,4 @@
+// initilize parameters globally
 let mass = 1;
 let k = 1;
 let c = 1;
@@ -5,6 +6,7 @@ let ratio = 0.5;
 let result = [0, 0, 0, 0, 0, 0];
 let x1 = 20;
 
+// 1. linking input parameters
 function defaultVal() {
     calculate();
     changeDRatio();
@@ -14,7 +16,7 @@ function callback() {
     changeDRatio();
 }
 
-
+  // function for changing damping factor value
 function changeDFactor(val1) {
     let val2 = document.getElementById("dFactor");
     let mFactor = $("#selectM").val();
@@ -26,6 +28,7 @@ function changeDFactor(val1) {
     val2.value = val1.value * 2 * Math.sqrt(mass1 * k1);
 }
 
+  // function for changing damping ratio value
 function changeDRatio() {
     let val1 = document.getElementById("dFactor");
     let val2 = document.getElementById("dRatio");
@@ -41,7 +44,7 @@ function changeDRatio() {
     val2.value = val1.value * cFactor / (2 * Math.sqrt(mass1 * k1));
 }
 
-
+// 2. calculating outpot values 
 function calculate() {
 
     let err = "Add ";
@@ -53,6 +56,8 @@ function calculate() {
     ratio = $("#dRatio").val();
     ratio = Number(ratio);
 
+
+    // checking for null values
     if (!mass) {
         err += "Mass, ";
     }
@@ -68,7 +73,7 @@ function calculate() {
     if (!x1) {
         err += "Initial displacemt, ";
     }
-
+    // no null values
     if ((mass && k && x1)) {
         $("#error").css('display', "none");
         $("#table").css('display', "block");
@@ -114,9 +119,6 @@ function calculate() {
         result[5] = result[5].toFixed(3);
 
 
-
-
-
         $("#result0").html(result[0]);
         $("#result1").html(result[1]);
         $("#result2").html(result[2]);
@@ -126,10 +128,12 @@ function calculate() {
         $("#result6").html(result[6]);
 
 
+        // 3. graphs 
         let datagiven = [];
         let dataplot2 = [];
         let dataplot3 = [];
 
+        // graph1
         for (let i = 0; i < 20; i = i + 0.01) {
             let x = i;
             let y = 1;
@@ -176,10 +180,12 @@ function calculate() {
         });
         chart.render();
 
+        // graph 2&3 condition check
         if (ratio < 1 && ratio > 0) {
             $("#box1").css('display', "block");
             $("#box2").css("display", "block");
 
+            // graph 2
             for (let i = 0.1; i < 1; i = i + 0.01) {
                 let x = i;
                 let y = (2 * Math.PI * x) / (Math.sqrt(1 - (x * x)));
@@ -210,6 +216,7 @@ function calculate() {
             chart.render();
 
 
+            // graph 3 
             for (let i = 0; i < 20; i = i + 0.01) {
                 let x = i;
                 let y = (x1 * Math.exp(-1 * ratio * result[0] * x)) / Math.sqrt((1 - ratio * ratio));
@@ -246,6 +253,7 @@ function calculate() {
             $("#box2").css("display", "none");
         }
     }
+    // null value
     else {
         err = err.substring(0, err.length - 2);
         

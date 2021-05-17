@@ -21,6 +21,7 @@
 </head>
 
 <body onload="defaultVal();">
+<!-- 1. heading-->
   <!-- <div class="container"> -->
   <div class="row">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
@@ -44,6 +45,8 @@
       <h3> free vibration systems</h3>
     </div>
   </div>
+
+<!-- 2. theory-->
   <div class="row ">
     <div class="container">
       <div class="col-sm-12">
@@ -102,6 +105,7 @@
       </div>
     </div>
   </div>
+<!-- 3. input parameters-->
   <div class="row " id="inputParameters">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
@@ -132,7 +136,10 @@
       </p>
 
       <p></p>
+      <!-- error msg-->
       <div id="error"></div>
+      
+
       <form class="text-center">
         <div class="form-group row">
           <label for="mass" class="col-sm-3 col-form-label">Mass</label>
@@ -202,8 +209,12 @@
           </div>
         </div>
       </form>
+
     </div>
   </div>
+
+<!-- 4. output parameters-->
+
   <div class="row">
     <p></p>
   </div>
@@ -236,6 +247,8 @@
         The natural log of the ratio of the amplitudes of any two successive peaks in a damped oscillation is the
         logarithmic decrement.
       </p>
+
+
       <div id="table">
         <table class="table table-striped border">
           <thead>
@@ -291,9 +304,14 @@
             </tr>
           </tbody>
         </table>
+
+
       </div>
     </div>
   </div>
+
+<!-- 5. graphs-->
+
   <div class="row">
     <p></p>
   </div>
@@ -387,7 +405,7 @@
   <!-- </div> -->
 
   <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS canvas.Js -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -398,6 +416,8 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+ 
+ 
   <script src="./js/script.js" type="text/javascript"></script>
 </body>
 
